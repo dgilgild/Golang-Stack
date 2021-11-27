@@ -34,8 +34,8 @@ services:
         - MONGO_INITDB_ROOT_USERNAME=root
         - MONGO_INITDB_ROOT_PASSWORD=root123
     volumes:
-        - /golang-stack/volumes/data/mongodb/init.mongo.js:/docker-entrypoint-initdb.d/init.mongo.js:ro
-        - /golang-stack/volumes/config/mongodb:/data/db
+        - /golang-stack/volumes/config/mongodb/init.mongo.js:/docker-entrypoint-initdb.d/init.mongo.js:ro
+        - /golang-stack/volumes/data/mongodb:/data/db
     ports:
         - "27017-27019:27017-27019"
 
