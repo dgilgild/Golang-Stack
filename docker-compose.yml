@@ -1,34 +1,35 @@
 version: '3'
 services:
 
- # Nginx server configuration   
-  web:
-    image: nginx:1.17
-    container_name: webserver
-    depends_on:
-      - mysql
-      - php
-    links:
-      - mysql
-      - php
-    volumes:
-      - ./nmp_i1/volumes/data/nginx:/var/www/html
-      - ./nmp_i1/volumes/config/nginx:/etc/nginx/conf.d/
-    ports:
-      - "8080:80"
+# Nginx server configuration   
+#  web:
+#    image: nginx:1.17
+#    container_name: webserver
+#    depends_on:
+#      - mysql
+#      - php
+#    links:
+#      - mysql
+#      - php
+#    volumes:
+#      - ./nmp_i1/volumes/data/nginx:/var/www/html
+#      - ./nmp_i1/volumes/config/nginx:/etc/nginx/conf.d/
+#    ports:
+#      - "8080:80"
 
- # Php-fpm configuration
-  php:
-    image: php:7.2-fpm
-    volumes:
-      - ./nmp_i1/volumes/data/nginx:/var/www/html
-      - ./nmp_i1/volumes/config/php:/usr/local/etc/php/php.ini
- # Mysql configuration
-  mysql:
-    image: mysql/mysql-server:8.0
-    container_name: mysql
-    restart: always
-    environment:
+# Php-fpm configuration
+#  php:
+#    image: php:7.2-fpm
+#    volumes:
+#      - ./nmp_i1/volumes/data/nginx:/var/www/html
+#      - ./nmp_i1/volumes/config/php:/usr/local/etc/php/php.ini
+
+# MongoDB configuration
+  mongodb:
+#    image: mongodb/mysql-server:8.0
+#    container_name: mysql
+#    restart: always
+#    environment:
         - MYSQL_DATABASE=docker_demo
         - MYSQL_ROOT_PASSWORD=root123
         - MYSQL_USER=daniel
@@ -39,15 +40,15 @@ services:
         - /nmp_i1/volumes/data/mysql:/var/lib/mysql
         - /nmp_i1/volumes/config/mysql:/etc/mysql/conf.d
 
- # PHPMyAdmin configuration        
-  myadmin:
-    image: phpmyadmin:5.1.1
-    container_name: phpmyadmin
-    ports:
-        - "8081:80"
-    environment:
-        - PMA_ARBITRARY=1
-        - PMA_HOST=mysql
-    restart: always
-    depends_on:
-        - mysql
+# PHPMyAdmin configuration        
+#  myadmin:
+#    image: phpmyadmin:5.1.1
+#    container_name: phpmyadmin
+#    ports:
+#        - "8081:80"
+#    environment:
+#        - PMA_ARBITRARY=1
+#        - PMA_HOST=mysql
+#    restart: always
+#    depends_on:
+#        - mysql#
